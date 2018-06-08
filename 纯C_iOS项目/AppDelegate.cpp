@@ -9,14 +9,12 @@
 Class ViewClass;
 //Class AppDelClass;
 
-
-
-
-
-
 BOOL AppDelegate::AppDel_didFinishLaunching(AppDelegate*lapp, SEL _cmd, void *application, void *options)
 {
-	
+
+	long double a;
+	printf("%f",a);
+
 	ScreenCapture *cap = new ScreenCapture();
 	
 	
@@ -48,8 +46,7 @@ AppDelegate::AppDelegate()
 	printf("实例化代理");
 	isa  = objc_allocateClassPair(objc_getClass("UIResponder"), "AppDelegate", 0);
 	class_addIvar(isa, "window", sizeof(id), 0, "@");
-	
-	class_addMethod(isa, sel_getUid("application:didFinishLaunchingWithOptions:"), (IMP) AppDel_didFinishLaunching, "i@:@@");
+	class_addMethod(isa,sel_getUid("application:didFinishLaunchingWithOptions:"), (IMP) AppDel_didFinishLaunching, "i@:@@");
 	class_addMethod(isa,
 					sel_getUid("touchesBegan:withEvent:"), (IMP)touchesBegin,"");
 	objc_registerClassPair(isa);
@@ -91,25 +88,4 @@ void View_drawRect(id self, SEL _cmd, struct CGRect rect)
 	CGContextFillPath(context);
 }
 
-// Once again we use the (constructor) attribute. generally speaking,
-// having many of these is a very bad idea, but in a small application
-// like this, it really shouldn't be that big of an issue.
-//__attribute__((constructor))
-//static void initView()
-//{
-//	// Once again, just like the app delegate, we tell the runtime to
-//	// create a new class, this time a subclass of 'UIView' and named 'View'.
-//	ViewClass = objc_allocateClassPair(objc_getClass("UIView"), "View", 0);
-//	
-//	// and again, we tell the runtime to add a function called -drawRect:
-//	// to our custom view. Note that there is an error in the type-specification
-//	// of this method, as I do not know the @encode sequence of 'CGRect' off
-//	// of the top of my head. As a result, there is a chance that the rect
-//	// parameter of the method may not get passed properly.
-//	class_addMethod(ViewClass, sel_getUid("drawRect:"), (IMP) View_drawRect, "v@:");
-//	
-//	// And again, we tell the runtime that this class is now valid to be used.
-//	// At this point, the application should run and display the screenshot shown below.
-//	objc_registerClassPair(ViewClass);
-//}
 

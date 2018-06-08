@@ -10,10 +10,10 @@
 #define ScreenCapture_hpp
 
 #include <stdio.h>
-#include <IOSurface/IOSurfaceRef.h>
+
 
 class ScreenCapture {
-	IOSurfaceRef mSurefaceRef;
+
 	
 public:
 	ScreenCapture();

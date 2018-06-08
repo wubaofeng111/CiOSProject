@@ -7,7 +7,7 @@
 //
 
 #include "ScreenCapture.hpp"
-#include <IOSurface/IOSurfaceRef.h>
+
 #include <CoreGraphics/CoreGraphics.h>
 
 
